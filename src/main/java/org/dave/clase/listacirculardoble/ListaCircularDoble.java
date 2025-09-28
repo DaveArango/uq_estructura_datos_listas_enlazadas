@@ -248,14 +248,11 @@ public class ListaCircularDoble<T extends Comparable<T>> implements Iterable<T> 
     private void invertirRecursivo(NodoDoble<T> actual, NodoDoble<T> anterior) {
         NodoDoble<T> siguiente = actual.getSiguiente();
 
-        // Reasignamos punteros en la vuelta
         actual.setSiguiente(anterior);
         actual.setAnterior(siguiente);
 
-        // Caso base: si llegamos al último nodo (antes de volver al primero)
         if (actual == nodoUltimo) return;
 
-        // Llamada recursiva
         invertirRecursivo(siguiente, actual);
     }
 
