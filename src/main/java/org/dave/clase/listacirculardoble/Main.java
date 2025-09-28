@@ -46,6 +46,10 @@ public class Main {
         }
         System.out.println();
 
+        lista.imprimirLista();
+        lista.invertirContenido();
+        lista.imprimirLista();
+
         lista.borrarLista();
         lista.imprimirLista();
     }

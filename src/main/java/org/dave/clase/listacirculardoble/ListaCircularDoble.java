@@ -59,7 +59,6 @@ public class ListaCircularDoble<T extends Comparable<T>> implements Iterable<T> 
     // ---------------- AGREGAR POSICION ----------------
     public void agregarPosicion(T valor, int indice) {
         if (!indiceValido(indice)) return;
-
         if (indice == 0) {
             agregarInicio(valor);
         } else if (indice == tamanio) {
@@ -227,5 +226,38 @@ public class ListaCircularDoble<T extends Comparable<T>> implements Iterable<T> 
         nodoPrimero = nodoUltimo = null;
         tamanio = 0;
     }
+
+    //------------ INVERTIR LISTA RECURSIVA ---------
+    public void invertirContenido() {
+        if (estaVacia() || tamanio == 1) return;
+
+        // Iniciamos la recursión desde el primero
+        invertirRecursivo(nodoPrimero, null);
+
+        // Intercambiamos primero y último
+        NodoDoble<T> temp = nodoPrimero;
+        nodoPrimero = nodoUltimo;
+        nodoUltimo = temp;
+
+        // Restauramos circularidad
+        nodoPrimero.setAnterior(nodoUltimo);
+        nodoUltimo.setSiguiente(nodoPrimero);
+    }
+
+    // Método recursivo
+    private void invertirRecursivo(NodoDoble<T> actual, NodoDoble<T> anterior) {
+        NodoDoble<T> siguiente = actual.getSiguiente();
+
+        // Reasignamos punteros en la vuelta
+        actual.setSiguiente(anterior);
+        actual.setAnterior(siguiente);
+
+        // Caso base: si llegamos al último nodo (antes de volver al primero)
+        if (actual == nodoUltimo) return;
+
+        // Llamada recursiva
+        invertirRecursivo(siguiente, actual);
+    }
+
 }
 
