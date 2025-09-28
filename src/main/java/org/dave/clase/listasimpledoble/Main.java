@@ -52,6 +52,10 @@ public class Main{
         }
         System.out.println();
 
+        lista.invertirContenido();
+        System.out.println("Lista invertida:");
+        lista.imprimirLista();
+
         lista.borrarLista();
         lista.imprimirLista();
         System.out.println("¿Lista vacía? " + lista.estaVacia());

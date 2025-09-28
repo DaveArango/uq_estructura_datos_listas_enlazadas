@@ -211,6 +211,8 @@ public class ListaSimple<T extends Comparable<T>> implements Iterable<T> {
         return tamanio;
     }
 
+
+    // ---------------- INVERTIR CONTENIDO ----------------
     public void invertirContenido(ListaSimple<T> lista) {
         if(esVacio() || tamanio == 1){
             return;

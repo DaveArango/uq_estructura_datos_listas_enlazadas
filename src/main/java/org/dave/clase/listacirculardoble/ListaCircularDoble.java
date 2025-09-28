@@ -231,15 +231,12 @@ public class ListaCircularDoble<T extends Comparable<T>> implements Iterable<T> 
     public void invertirContenido() {
         if (estaVacia() || tamanio == 1) return;
 
-        // Iniciamos la recursión desde el primero
         invertirRecursivo(nodoPrimero, null);
 
-        // Intercambiamos primero y último
         NodoDoble<T> temp = nodoPrimero;
         nodoPrimero = nodoUltimo;
         nodoUltimo = temp;
 
-        // Restauramos circularidad
         nodoPrimero.setAnterior(nodoUltimo);
         nodoUltimo.setSiguiente(nodoPrimero);
     }

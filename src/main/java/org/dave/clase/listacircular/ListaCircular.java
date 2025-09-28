@@ -225,5 +225,26 @@ public class ListaCircular<T extends Comparable<T>> implements Iterable<T> {
         nodoPrimero = nodoUltimo = null;
         tamanio = 0;
     }
+
+    // ---------------- INVERTIR CONTENIDO ----------------
+    public void invertirContenido() {
+        if (tamanio <= 1) return;
+        Nodo<T> antiguoPrimero = nodoPrimero;
+        nodoPrimero = invertirRecursivo(nodoPrimero, null);
+        nodoUltimo = antiguoPrimero;
+        nodoUltimo.setNodoSiguiente(nodoPrimero);
+    }
+
+    private Nodo<T> invertirRecursivo(Nodo<T> actual, Nodo<T> anterior) {
+        if (actual == nodoUltimo) {
+            actual.setNodoSiguiente(anterior);
+            return actual;
+        }
+        Nodo<T> siguiente = actual.getNodoSiguiente();
+        Nodo<T> nuevaCabeza = invertirRecursivo(siguiente, actual);
+        actual.setNodoSiguiente(anterior);
+        return nuevaCabeza;
+    }
+
 }
 

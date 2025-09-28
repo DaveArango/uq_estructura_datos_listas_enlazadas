@@ -55,6 +55,10 @@ public class Main {
             System.out.println("Elemento: " + num);
         }
 
+        lista.invertirContenido(lista);
+        System.out.println("Lista invertida:");
+        lista.imprimirLista();
+
         lista.borrarLista();
         System.out.println("Lista después de borrar:");
         lista.imprimirLista();

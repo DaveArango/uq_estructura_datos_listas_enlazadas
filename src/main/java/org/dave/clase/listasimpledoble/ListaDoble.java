@@ -220,5 +220,34 @@ public class ListaDoble<T extends Comparable<T>> implements Iterable<T> {
             }
         };
     }
+
+    // ---------------- INVERTIR CONTENIDO ----------------
+    public void invertirContenido() {
+        if (tamanio <= 1) return;
+        nodoPrimero = invertirRecursivo(nodoPrimero);
+        NodoDoble<T> aux = nodoPrimero;
+        while (aux.getSiguiente() != null) {
+            aux = aux.getSiguiente();
+        }
+        nodoUltimo = aux;
+    }
+
+    private NodoDoble<T> invertirRecursivo(NodoDoble<T> actual) {
+        if (actual.getSiguiente() == null) {
+            actual.setAnterior(null);
+            return actual;
+        }
+
+        NodoDoble<T> nuevaCabeza = invertirRecursivo(actual.getSiguiente());
+
+        actual.getSiguiente().setSiguiente(actual);
+        actual.setAnterior(actual.getSiguiente());
+        actual.setSiguiente(null);
+
+        return nuevaCabeza;
+    }
+
+
+
 }
 
