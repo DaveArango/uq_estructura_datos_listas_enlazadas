@@ -1,4 +1,4 @@
-package org.dave.clase;
+package org.dave.clase.listasimple;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;

@@ -1,4 +1,4 @@
-package org.dave.clase;
+package org.dave.clase.listasimple;
 
 public class Nodo<T> {
     private T valor;
